@@ -3,19 +3,19 @@
 A microservice-based Streamlit app that extracts structured JSON data from scanned ביטוח לאומי (National Insurance Institute) forms using:
 
 - 🧠 **Azure Document Intelligence** (OCR)
-- 🤖 **Azure OpenAI (GPT-4o)** for field parsing
-- 🌍 Hebrew or English support
-- 🐳 Containerized with Docker & Docker Compose
+- 🤖 **Azure OpenAI (GPT-4o)** for field extraction
+- 🌍 Supports Hebrew and English forms
+- 🐳 Dockerized with Docker & Docker Compose
 
 ---
 
 ## 📦 Features
 
-- Upload PDF/JPG forms
+- Upload PDF/JPG scanned forms
 - Auto-detects language (Hebrew/English)
 - Extracts structured JSON (with fallback for missing fields)
-- Secure `.env`-based configuration
-- Fully dockerized and easy to run anywhere
+- `.env`-based secret management
+- Fully containerized and production-ready
 
 ---
 
@@ -26,17 +26,17 @@ A microservice-based Streamlit app that extracts structured JSON data from scann
 - **Azure Document Intelligence**
 - **Azure OpenAI (GPT-4o / GPT-4o-mini)**
 - **Docker** & **Docker Compose**
-- **dotenv** for secret loading
+- **python-dotenv** for secret loading
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Clone the repo
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/national_insurance_form_parser.git
-cd national_insurance_form_parser
+git clone https://github.com/EitanBakirov/national-insurance-form-parser.git
+cd national-insurance-form-parser
 ```
 
 ### 2. Configure environment
@@ -45,7 +45,7 @@ cd national_insurance_form_parser
 cp .env.example .env
 ```
 
-Then open `.env` and fill in your **Azure API keys**:
+Then open `.env` and fill in your **Azure API credentials**:
 
 ```env
 DOCUMENT_ENDPOINT=https://<your-doc-endpoint>.cognitive.microsoft.com/
@@ -59,7 +59,7 @@ OPENAI_KEY=your-openai-key
 
 ## 🧪 Run Locally
 
-### Option 1: With Python virtual environment
+### Option 1: Using Python (virtualenv)
 
 ```bash
 python -m venv venv
@@ -70,7 +70,7 @@ streamlit run app.py
 
 ---
 
-### Option 2: With Docker
+### Option 2: Using Docker
 
 ```bash
 docker build -t national_insurance_parser .
@@ -79,13 +79,13 @@ docker run --env-file .env -p 8501:8501 national_insurance_parser
 
 ---
 
-### Option 3: With Docker Compose (recommended)
+### Option 3: Using Docker Compose (recommended)
 
 ```bash
 docker-compose up --build
 ```
 
-Visit: [http://localhost:8501](http://localhost:8501)
+Then visit: [http://localhost:8501](http://localhost:8501)
 
 ---
 
@@ -96,6 +96,11 @@ Visit: [http://localhost:8501](http://localhost:8501)
   "lastName": "Cohen",
   "firstName": "Avi",
   "idNumber": "123456789",
+  "dateOfBirth": {
+    "day": "05",
+    "month": "06",
+    "year": "1984"
+  },
   ...
 }
 ```
@@ -104,9 +109,9 @@ Visit: [http://localhost:8501](http://localhost:8501)
 
 ## 🛡️ Security Notes
 
-- Never commit your `.env` file.
-- Always use `.env.example` for templates.
-- This app supports multiple users by letting each developer insert their own credentials.
+- ❌ Never commit your `.env` file.
+- ✅ Use `.env.example` as a template.
+- 🔑 Each developer can configure their own credentials for local runs.
 
 ---
 
@@ -114,13 +119,14 @@ Visit: [http://localhost:8501](http://localhost:8501)
 
 ```
 .
-├── app.py                      # Streamlit entry point
+├── app.py                    # Streamlit entry point
 ├── docker-compose.yml
 ├── Dockerfile
-├── .env.example
+├── .env.example              # Sample environment config
+├── requirements.txt
 ├── services/
-│   ├── config.py               # Loads secrets from .env
-│   ├── document_ocr.py         # Document Intelligence logic
-│   └── openai_helpers.py       # GPT integration
+│   ├── config.py             # Loads secrets
+│   ├── document_ocr.py       # Azure Document Intelligence logic
+│   └── openai_helpers.py     # GPT-based field extraction
 ```
-
+```
