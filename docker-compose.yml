@@ -4,6 +4,6 @@ services:
   national_insurance_parser:
     build: .
     ports:
-      - "8501:8501"
+      - "8502:8501"
     env_file:
       - .env
