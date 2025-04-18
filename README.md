@@ -43,26 +43,6 @@ Copy `.env.example` to `.env` and fill in your Azure credentials.
 
 ## Running Options
 
-### Local Development Environment
-
-1. Create and activate a virtual environment:
-```bash
-python -m venv venv
-.\venv\Scripts\activate
-```
-
-2. Install dependencies:
-```bash 
-pip install -r requirements.txt
-```
-
-3. Run the application:
-```bash
-streamlit run app.py
-```
-
-Access at: http://localhost:8501
-
 ### Docker Compose (Production)
 
 1. Build and run containers:
