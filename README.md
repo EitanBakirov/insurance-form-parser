@@ -133,3 +133,17 @@ The application tracks:
 │   ├── monitoring.py        # Performance monitoring
 │   └── validation.py        # Form validation
 ```
+
+## Potential Upgrades
+
+- **Better OCR Model for Extraction**  
+  Improve the accuracy of data extraction by replacing Azure's default OCR with a model trained specifically for Israeli National Insurance forms.  
+  If training a model isn't possible, we should use a step-by-step method:
+  1. Try to detect known fields and extract the relevant info based on their location on the page.
+  2. If that fails, extract text line by line and apply smart rules to find the needed fields.
+  3. If needed, pass all text to the LLM and let it try to understand the form.
+
+- **User Editing with Accuracy Feedback**  
+  Let users fix any incorrect fields through an easy-to-use form.  
+  After they submit, show an **accuracy score** that compares the original extraction to the corrected version.
+  
