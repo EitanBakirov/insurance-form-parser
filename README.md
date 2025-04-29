@@ -9,6 +9,15 @@ The system uses:
 - Docker and Docker Compose for deployment
 - Enhanced logging and monitoring
 
+## Application Screenshots
+
+![image](https://github.com/user-attachments/assets/9230a122-f2d5-42fc-885c-52c9a2dce6ac)
+
+![image](https://github.com/user-attachments/assets/bf464e1a-506d-4a12-8c96-020a3a1a3d0e)
+
+![image](https://github.com/user-attachments/assets/e9bf3099-205d-4f4f-af1b-d9822aafc147)
+
+
 ## Features
 
 - Upload scanned forms (PDF, JPG, PNG)
